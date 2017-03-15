@@ -1,0 +1,21 @@
+version: '2'
+services:
+  ndn-box-sp:
+    image: ndn-box-sp
+    volumes:
+      #- ./data/simplesamlphp-1.13.2:/var/simplesamlphp
+      - ./data/simplesamlphp-1.14.11:/var/simplesamlphp
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./data/certs:/certs
+    links:
+      - ndn-box-sp
+    depends_on:
+      - ndn-box-sp
+    ports:
+      - 443:443
+
+
+
