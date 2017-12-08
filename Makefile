@@ -2,7 +2,7 @@ VERSION=latest
 NAME=ndn-box-sp
 #REGISTRY=
 
-all: build push
+all: build
 build:
 	docker build --no-cache=true -t $(NAME) .
 	#docker tag $(NAME) $(REGISTRY)/$(NAME):$(VERSION)

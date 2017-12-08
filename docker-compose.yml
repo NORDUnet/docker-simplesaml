@@ -4,7 +4,8 @@ services:
     image: ndn-box-sp
     volumes:
       #- ./data/simplesamlphp-1.13.2:/var/simplesamlphp
-      - ./data/simplesamlphp-1.14.11:/var/simplesamlphp
+      #- ./data/simplesamlphp-1.14.11:/var/simplesamlphp
+      - ./data/simplesamlphp-1.15.0:/var/simplesamlphp
   nginx:
     image: nginx
     volumes:
