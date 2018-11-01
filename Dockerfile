@@ -11,6 +11,7 @@ ADD simplesamlphp-${SIMPLE_SAML_VERSION}.tar.gz.sha256 .
 RUN curl -L -o simplesamlphp-${SIMPLE_SAML_VERSION}.tar.gz https://github.com/simplesamlphp/simplesamlphp/releases/download/v${SIMPLE_SAML_VERSION}/simplesamlphp-${SIMPLE_SAML_VERSION}.tar.gz && \
     sha256sum -c simplesamlphp-${SIMPLE_SAML_VERSION}.tar.gz.sha256 && \
     tar xf simplesamlphp-${SIMPLE_SAML_VERSION}.tar.gz && \
+    ln -s $(pwd)/simplesamlphp-${SIMPLE_SAML_VERSION} $(pwd)/simplesamlphp && \
     rm -r simplesamlphp-${SIMPLE_SAML_VERSION}.tar.gz
 WORKDIR /opt/simplesamlphp-${SIMPLE_SAML_VERSION}
 RUN rm -r metadata && \
