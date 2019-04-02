@@ -5,7 +5,7 @@ COPY apache/php-limit.ini /usr/local/etc/php/conf.d/
 COPY apache/box-sp.conf /etc/apache2/sites-available/
 RUN a2ensite box-sp && a2dissite 000-default
 ENV SP_BASENAME "https://box-idp.nordu.net"
-ENV SIMPLE_SAML_VERSION 1.16.3
+ENV SIMPLE_SAML_VERSION 1.17.1
 WORKDIR /opt
 ADD simplesamlphp-${SIMPLE_SAML_VERSION}.tar.gz.sha256 .
 RUN curl -L -o simplesamlphp-${SIMPLE_SAML_VERSION}.tar.gz https://github.com/simplesamlphp/simplesamlphp/releases/download/v${SIMPLE_SAML_VERSION}/simplesamlphp-${SIMPLE_SAML_VERSION}.tar.gz && \
