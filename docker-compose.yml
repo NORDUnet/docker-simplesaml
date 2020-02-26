@@ -1,7 +1,7 @@
 version: '2'
 services:
   ndn-box-sp:
-    image: ndn-box-sp
+    build: .
     volumes:
       #- ./data/simplesamlphp-1.13.2:/var/simplesamlphp
       #- ./data/simplesamlphp-1.14.11:/var/simplesamlphp
