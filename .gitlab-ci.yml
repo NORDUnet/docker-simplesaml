@@ -1,0 +1,19 @@
+---
+image: docker:stable
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: "/certs"
+
+services:
+  - docker:dind
+
+before_script:
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+build_image:
+  stage: build
+  script:
+    - docker build --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$(awk '/ENV SIMPLE_SAML_VERSION/ {print $3}' Dockerfile) ./idp/
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY_IMAGE:$(awk '/ENV SIMPLE_SAML_VERSION/ {print $3}' Dockerfile)
+    - docker push $CI_REGISTRY_IMAGE:latest
