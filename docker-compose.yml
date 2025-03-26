@@ -5,6 +5,7 @@ services:
     volumes:
       #- ./data/simplesamlphp-1.13.2:/var/simplesamlphp
       #- ./data/simplesamlphp-1.14.11:/var/simplesamlphp
+      #- ./data-pre2.x/simplesamlphp-overwrites:/opt/simplesamlphp-overwrites
       - ./data/simplesamlphp-overwrites:/opt/simplesamlphp-overwrites
   nginx:
     image: nginx
